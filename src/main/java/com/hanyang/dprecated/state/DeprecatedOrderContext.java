@@ -6,38 +6,39 @@ import org.springframework.stereotype.Component;
 @Component
 public class DeprecatedOrderContext {
 
-    private DeprecatedAbstractOrderState currentState;
-
     @Autowired
     private DeprecatedCreateOrder deprecatedCreateOrder;
 
-    // 设置当前订单状态
-    public void setCurrentState(DeprecatedAbstractOrderState currentState) {
-        this.currentState = currentState;
-    }
+    @Autowired
+    private DeprecatedPayOrder deprecatedPayOrder;
+
+    @Autowired
+    private DeprecatedSendOrder deprecatedSendOrder;
+
+    @Autowired
+    private DeprecatedReceiveOrder deprecatedReceiveOrder;
 
     // 创建订单
     public DeprecatedOrder createOrder(String orderId, String productId) {
-        this.currentState = this.deprecatedCreateOrder;
-        DeprecatedOrder order = currentState.createOrder(orderId, productId, this);
+        DeprecatedOrder order = deprecatedCreateOrder.createOrder(orderId, productId, this);
         return order;
     }
 
     // 支付订单
     public DeprecatedOrder payOrder(String orderId) {
-        DeprecatedOrder order = currentState.payOrder(orderId, this);
+        DeprecatedOrder order = deprecatedPayOrder.payOrder(orderId, this);
         return order;
     }
 
     // 发送订单
     public DeprecatedOrder sendOrder(String orderId) {
-        DeprecatedOrder order = currentState.sendOrder(orderId, this);
+        DeprecatedOrder order = deprecatedSendOrder.sendOrder(orderId, this);
         return order;
     }
 
     // 接收订单
     public DeprecatedOrder receiveOrder(String orderId) {
-        DeprecatedOrder order = currentState.receiveOrder(orderId, this);
+        DeprecatedOrder order = deprecatedReceiveOrder.receiveOrder(orderId, this);
         return order;
     }
 }

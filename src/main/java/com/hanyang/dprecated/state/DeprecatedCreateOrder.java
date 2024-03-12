@@ -23,7 +23,6 @@ public class DeprecatedCreateOrder extends DeprecatedAbstractOrderState {
                 .build();
         // 将新订单存入redis缓存，15分钟后失效
         redisCommonProcessor.set(orderId, order, 900);
-        context.setCurrentState(this.deprecatedPayOrder);
         return order;
     }
 }

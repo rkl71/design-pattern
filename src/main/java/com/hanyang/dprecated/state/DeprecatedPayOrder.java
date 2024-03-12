@@ -21,7 +21,6 @@ public class DeprecatedPayOrder extends DeprecatedAbstractOrderState {
         }
         order.setState(ORDER_WAIT_SEND);
         redisCommonProcessor.set(orderId, order);
-        context.setCurrentState(this.deprecatedSendOrder);
         return order;
     }
 }
