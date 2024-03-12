@@ -29,4 +29,9 @@ public class RedisCommonProcessor {
             set(key, value);
         }
     }
+
+    // 根据key删除redis缓存数据
+    public void remove(String key) {
+        redisTemplate.delete(key);
+    }
 }
