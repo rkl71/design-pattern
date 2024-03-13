@@ -1,5 +1,7 @@
 package com.hanyang.service;
 
+import com.hanyang.ordermanagement.command.OrderCommand;
+import com.hanyang.ordermanagement.command.invoker.OrderCommandInvoker;
 import com.hanyang.ordermanagement.state.OrderState;
 import com.hanyang.ordermanagement.state.OrderStateChangeAction;
 import com.hanyang.pojo.Order;
@@ -22,6 +24,9 @@ public class OrderService {
     @Autowired
     private RedisCommonProcessor redisCommonProcessor;
 
+    @Autowired
+    private OrderCommand orderCommand;
+
     // 订单创建
     public Order createOrder(String productId) {
         String orderId = "OID" + productId;
@@ -31,6 +36,8 @@ public class OrderService {
                 .orderState(OrderState.ORDER_WAIT_PAY)
                 .build();
         redisCommonProcessor.set(order.getOrderId(), order, 900);
+        OrderCommandInvoker invoker = new OrderCommandInvoker();
+        invoker.invoke(orderCommand, order);
         return order;
     }
 
