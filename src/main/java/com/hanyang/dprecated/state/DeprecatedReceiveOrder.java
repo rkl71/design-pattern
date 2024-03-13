@@ -17,6 +17,8 @@ public class DeprecatedReceiveOrder extends DeprecatedAbstractOrderState {
             throw new UnsupportedOperationException("Order state should be ORDER_WAIT_RECEIVE" + ".But now it's state is : " + order.getState());
         }
         order.setState(ORDER_FINISH);
+        // 观察者模式
+        super.notifyObserver(orderId, ORDER_FINISH);
         redisCommonProcessor.remove(orderId);
         return order;
     }
