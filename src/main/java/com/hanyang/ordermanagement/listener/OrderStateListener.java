@@ -17,10 +17,10 @@ public class OrderStateListener {
     private RedisCommonProcessor redisCommonProcessor;
 
     @OnTransition(source = "ORDER_WAIT_PAY", target = "ORDER_WAIT_SEND")
-    public boolean payToSend(Message<OrderStateChangeAction> message){
+    public boolean payToSend(Message<OrderStateChangeAction> message) {
         // 从Redis中获取订单，并判断当前订单状态是否为待支付
         Order order = (Order) message.getHeaders().get("order");
-        if (order.getOrderState() != OrderState.ORDER_WAIT_PAY){
+        if (order.getOrderState() != OrderState.ORDER_WAIT_PAY) {
             throw new UnsupportedOperationException("Order state error!");
         }
         order.setOrderState(OrderState.ORDER_WAIT_SEND);
@@ -29,10 +29,10 @@ public class OrderStateListener {
     }
 
     @OnTransition(source = "ORDER_WAIT_SEND", target = "ORDER_WAIT_RECEIVE")
-    public boolean sendToReceive(Message<OrderStateChangeAction> message){
+    public boolean sendToReceive(Message<OrderStateChangeAction> message) {
         // 从Redis中获取订单，并判断当前订单状态是否为待支付
         Order order = (Order) message.getHeaders().get("order");
-        if (order.getOrderState() != OrderState.ORDER_WAIT_SEND){
+        if (order.getOrderState() != OrderState.ORDER_WAIT_SEND) {
             throw new UnsupportedOperationException("Order state error!");
         }
         order.setOrderState(OrderState.ORDER_WAIT_RECEIVE);
@@ -41,14 +41,15 @@ public class OrderStateListener {
     }
 
     @OnTransition(source = "ORDER_WAIT_RECEIVE", target = "ORDER_WAIT_FINISH")
-    public boolean receiveToFinish(Message<OrderStateChangeAction> message){
+    public boolean receiveToFinish(Message<OrderStateChangeAction> message) {
         // 从Redis中获取订单，并判断当前订单状态是否为待支付
         Order order = (Order) message.getHeaders().get("order");
-        if (order.getOrderState() != OrderState.ORDER_WAIT_RECEIVE){
+        if (order.getOrderState() != OrderState.ORDER_WAIT_RECEIVE) {
             throw new UnsupportedOperationException("Order state error!");
         }
         order.setOrderState(OrderState.ORDER_FINISH);
         redisCommonProcessor.remove(order.getOrderId());
+        redisCommonProcessor.remove(order.getOrderId() + "STATE");
         return true;
     }
 }
