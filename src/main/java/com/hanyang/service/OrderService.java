@@ -4,6 +4,7 @@ import com.hanyang.ordermanagement.command.OrderCommand;
 import com.hanyang.ordermanagement.command.invoker.OrderCommandInvoker;
 import com.hanyang.ordermanagement.state.OrderState;
 import com.hanyang.ordermanagement.state.OrderStateChangeAction;
+import com.hanyang.pay.facade.PayFacade;
 import com.hanyang.pojo.Order;
 import com.hanyang.utils.RedisCommonProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class OrderService {
 
     @Autowired
     private OrderCommand orderCommand;
+
+    @Autowired
+    private PayFacade payFacade;
 
     // 订单创建
     public Order createOrder(String productId) {
@@ -101,5 +105,11 @@ public class OrderService {
             orderStateMachine.stop();
         }
         return false;
+    }
+
+    public String getPayUrl(String orderId, Float price, Integer payType){
+        Order order = (Order) redisCommonProcessor.get(orderId);
+        order.setPrice(price);
+        return payFacade.pay(order, payType);
     }
 }
