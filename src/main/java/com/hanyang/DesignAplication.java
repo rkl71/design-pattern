@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 @SpringBootApplication
-@EnableApolloConfig
+@EnableApolloConfig //Apollo配置中心
 public class DesignAplication {
     public static void main(String[] args) {
         SpringApplication.run(DesignAplication.class, args);

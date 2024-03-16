@@ -6,6 +6,7 @@ import com.hanyang.ordermanagement.state.OrderState;
 import com.hanyang.ordermanagement.state.OrderStateChangeAction;
 import com.hanyang.pay.facade.PayFacade;
 import com.hanyang.pojo.Order;
+import com.hanyang.service.inter.OrderServiceInterface;
 import com.hanyang.utils.RedisCommonProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
@@ -15,7 +16,7 @@ import org.springframework.statemachine.persist.StateMachinePersister;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderService {
+public class OrderService implements OrderServiceInterface {
     @Autowired
     private StateMachine<OrderState, OrderStateChangeAction> orderStateMachine;
 

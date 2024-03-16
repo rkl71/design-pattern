@@ -15,3 +15,7 @@ values (1, '苹果电脑投放业务', '', '', 'computer,phone'),
        (2, '某奢侈品投放业务', '', 'F', 'Female bag'),
        (3, '北方某店投放业务', 'bj,tj', '', ''),
        (4, '平台优惠卷', '', '', '');
+
+insert into products(id, product_id, send_red_bag)
+values (1, '100', 0),
+       (2, '101', 1);

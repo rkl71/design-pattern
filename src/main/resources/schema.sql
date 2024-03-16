@@ -13,3 +13,10 @@ create table if not exists business_launch
     target_sex      varchar(8),
     target_product  varchar(32)
 );
+
+create table if not exists products
+(
+    id           INT auto_increment PRIMARY KEY not null,
+    product_id   varchar(8)                     not null,
+    send_red_bag INT                            not null
+);
