@@ -7,6 +7,9 @@ import com.hanyang.ordermanagement.state.OrderStateChangeAction;
 import com.hanyang.pay.facade.PayFacade;
 import com.hanyang.pojo.Order;
 import com.hanyang.service.inter.OrderServiceInterface;
+import com.hanyang.transaction.colleague.Buyer;
+import com.hanyang.transaction.colleague.Payer;
+import com.hanyang.transaction.mediator.Mediator;
 import com.hanyang.utils.RedisCommonProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
@@ -14,6 +17,8 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.persist.StateMachinePersister;
 import org.springframework.stereotype.Service;
+
+import javax.print.attribute.standard.Media;
 
 @Service
 public class OrderService implements OrderServiceInterface {
@@ -108,9 +113,23 @@ public class OrderService implements OrderServiceInterface {
         return false;
     }
 
-    public String getPayUrl(String orderId, Float price, Integer payType){
+    public String getPayUrl(String orderId, Float price, Integer payType) {
         Order order = (Order) redisCommonProcessor.get(orderId);
         order.setPrice(price);
         return payFacade.pay(order, payType);
+    }
+
+    public void friendPay(String sourceCustomer, String orderId, String targetCustomer, String payResult, String role) {
+        // 创建中介者
+        Mediator mediator = new Mediator();
+        Buyer buyer = new Buyer(orderId, mediator, sourceCustomer);
+        Payer payer = new Payer(orderId, mediator, sourceCustomer);
+        mediator.setBuyer(buyer);
+        mediator.setPayer(payer);
+        if (role.equals("B")) {
+            buyer.messageTransfer(orderId, targetCustomer, payResult);
+        } else if (role.equals("P")) {
+            payer.messageTransfer(orderId, targetCustomer, payResult);
+        }
     }
 }

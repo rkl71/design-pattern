@@ -53,6 +53,11 @@ public class OrderController {
         return orderService.receive(orderId);
     }
 
+    @PostMapping("friendPay")
+    public void friendPay(String sourceCustomer, String orderId, String targetCustomer, String payResult, String role){
+        orderService.friendPay(sourceCustomer, orderId, targetCustomer, payResult, role);
+    }
+
     @RequestMapping("/alipaycallback")
     public String alipayCallback(HttpServletRequest request) throws AlipayApiException, UnsupportedEncodingException, UnsupportedEncodingException {
         // 获取回调信息
