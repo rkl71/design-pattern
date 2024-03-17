@@ -22,4 +22,14 @@ public class CompanyTicket {
     private String product;
     // 税率、校验码、收款方等信息
     private String content;
+
+    public CompanyTicket clone() {
+        CompanyTicket companyTicket = null;
+        try {
+            companyTicket = (CompanyTicket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return companyTicket;
+    }
 }

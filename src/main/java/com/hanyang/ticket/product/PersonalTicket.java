@@ -18,4 +18,14 @@ public class PersonalTicket implements Cloneable {
     private String product;
     // 税率、发票代码、校验码等信息
     private String content;
+
+    public PersonalTicket clone() {
+        PersonalTicket personalTicket = null;
+        try {
+            personalTicket = (PersonalTicket) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return personalTicket;
+    }
 }
