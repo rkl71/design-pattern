@@ -7,6 +7,7 @@ import com.hanyang.ordermanagement.state.OrderStateChangeAction;
 import com.hanyang.pay.facade.PayFacade;
 import com.hanyang.pojo.Order;
 import com.hanyang.service.inter.OrderServiceInterface;
+import com.hanyang.transaction.colleague.AbstractCustomer;
 import com.hanyang.transaction.colleague.Buyer;
 import com.hanyang.transaction.colleague.Payer;
 import com.hanyang.transaction.mediator.Mediator;
@@ -18,7 +19,7 @@ import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.persist.StateMachinePersister;
 import org.springframework.stereotype.Service;
 
-import javax.print.attribute.standard.Media;
+import java.util.HashMap;
 
 @Service
 public class OrderService implements OrderServiceInterface {
@@ -36,6 +37,10 @@ public class OrderService implements OrderServiceInterface {
 
     @Autowired
     private PayFacade payFacade;
+
+    // 注入中介者对象
+    @Autowired
+    private Mediator mediator;
 
     // 订单创建
     public Order createOrder(String productId) {
@@ -124,8 +129,10 @@ public class OrderService implements OrderServiceInterface {
         Mediator mediator = new Mediator();
         Buyer buyer = new Buyer(orderId, mediator, sourceCustomer);
         Payer payer = new Payer(orderId, mediator, sourceCustomer);
-        mediator.setBuyer(buyer);
-        mediator.setPayer(payer);
+        HashMap<String, AbstractCustomer> map = new HashMap<>();
+        map.put("buyer", buyer);
+        map.put("payer", payer);
+        mediator.customerInstances.put(orderId, map);
         if (role.equals("B")) {
             buyer.messageTransfer(orderId, targetCustomer, payResult);
         } else if (role.equals("P")) {
