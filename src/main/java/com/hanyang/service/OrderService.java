@@ -126,7 +126,6 @@ public class OrderService implements OrderServiceInterface {
 
     public void friendPay(String sourceCustomer, String orderId, String targetCustomer, String payResult, String role) {
         // 创建中介者
-        Mediator mediator = new Mediator();
         Buyer buyer = new Buyer(orderId, mediator, sourceCustomer);
         Payer payer = new Payer(orderId, mediator, sourceCustomer);
         HashMap<String, AbstractCustomer> map = new HashMap<>();
