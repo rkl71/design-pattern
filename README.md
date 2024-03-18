@@ -4,15 +4,19 @@
 
 ![](https://kolin-blog.oss-cn-shanghai.aliyuncs.com/blog/202403181420777.png)
 
+<br/>
+
 ## 🤺设计模式原则
 
 ![](https://kolin-blog.oss-cn-shanghai.aliyuncs.com/blog/202403181419555.png)
 
+<br/>
 
 ## 🔖设计模式分类
 
 ![](https://kolin-blog.oss-cn-shanghai.aliyuncs.com/blog/202403181419322.png)
 
+<br/>
 
 ## ⚙️技术选型
 
