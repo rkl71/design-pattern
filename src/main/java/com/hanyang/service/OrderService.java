@@ -1,5 +1,9 @@
 package com.hanyang.service;
 
+import com.hanyang.ordermanagement.audit.CreateOrderLog;
+import com.hanyang.ordermanagement.audit.PayOrderLog;
+import com.hanyang.ordermanagement.audit.ReceiveOrderLog;
+import com.hanyang.ordermanagement.audit.SendOrderLog;
 import com.hanyang.ordermanagement.command.OrderCommand;
 import com.hanyang.ordermanagement.command.invoker.OrderCommandInvoker;
 import com.hanyang.ordermanagement.state.OrderState;
@@ -42,6 +46,18 @@ public class OrderService implements OrderServiceInterface {
     @Autowired
     private Mediator mediator;
 
+    @Autowired
+    private CreateOrderLog createOrderLog;
+
+    @Autowired
+    private PayOrderLog payOrderLog;
+
+    @Autowired
+    private SendOrderLog sendOrderLog;
+
+    @Autowired
+    private ReceiveOrderLog receiveOrderLog;
+
     // 订单创建
     public Order createOrder(String productId) {
         String orderId = "OID" + productId;
@@ -53,6 +69,7 @@ public class OrderService implements OrderServiceInterface {
         redisCommonProcessor.set(order.getOrderId(), order, 900);
         OrderCommandInvoker invoker = new OrderCommandInvoker();
         invoker.invoke(orderCommand, order);
+        createOrderLog.createAuditLog("userAccount", "CREATE", orderId);
         return order;
     }
 
@@ -66,6 +83,7 @@ public class OrderService implements OrderServiceInterface {
                 .build();
         // 将Message传递给spring状态机
         if (changeStateAction(message, order)) {
+            createOrderLog.createAuditLog("userAccount", "PAY", orderId);
             return order;
         }
         return null;
@@ -81,6 +99,7 @@ public class OrderService implements OrderServiceInterface {
                 .build();
         // 将Message传递给spring状态机
         if (changeStateAction(message, order)) {
+            createOrderLog.createAuditLog("userAccount", "SEND", orderId);
             return order;
         }
         return null;
@@ -96,6 +115,7 @@ public class OrderService implements OrderServiceInterface {
                 .build();
         // 将Message传递给spring状态机
         if (changeStateAction(message, order)) {
+            createOrderLog.createAuditLog("userAccount", "RECEIVE", orderId);
             return order;
         }
         return null;
@@ -138,4 +158,6 @@ public class OrderService implements OrderServiceInterface {
             payer.messageTransfer(orderId, targetCustomer, payResult);
         }
     }
+
+
 }
