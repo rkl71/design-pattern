@@ -5,6 +5,11 @@
 ## 📚说明书
 1. [适配器模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F)
 2. [桥接模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F)
+3. [组合模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F)
+4. [访问者模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F)
+5. [观察者模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F)
+6. [状态模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F)
+7. [命令模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F)
 
 <br/>
 
