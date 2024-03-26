@@ -10,6 +10,12 @@
 5. [观察者模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F)
 6. [状态模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F)
 7. [命令模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F)
+8. [策略模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F)
+9. [门面模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F)
+10. [工厂模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F)
+11. [享元模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F)
+12. [责任链模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F)
+
 
 <br/>
 
