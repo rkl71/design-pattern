@@ -13,8 +13,16 @@
 8. [策略模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F)
 9. [门面模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E9%97%A8%E9%9D%A2%E6%A8%A1%E5%BC%8F)
 10. [工厂模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F)
-11. [享元模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F)
-12. [责任链模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F)
+11. [抽象工厂模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F)
+12. [享元模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F)
+13. [责任链模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F)
+14. [装饰器模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F)
+15. [建造者模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F)
+16. [原型模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F)
+17. [代理模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F)
+18. [中介者模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F)
+19. [模板方法模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F)
+20. [迭代器模式](https://www.renkelin.vip/2024/03/24/design-patterns/#%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F)
 
 
 <br/>
